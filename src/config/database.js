@@ -13,12 +13,10 @@ let sequelize;
 if (isProd && process.env.DATABASE_URL) {
   console.log('✅ Utilisation de DATABASE_URL pour Railway');
   sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect: 'mysql',
+    dialect: 'postgres',
+    protocol: 'postgres',
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
+      ssl: isProd ? { require: true, rejectUnauthorized: false } : false,
     },
     logging: false,
   });
@@ -27,15 +25,17 @@ if (isProd && process.env.DATABASE_URL) {
   throw new Error('DATABASE_URL is required in production environment');
 } else {
   console.log('🔧 Mode développement - utilisation des variables locales');
-  sequelize = new Sequelize({
-    host: process.env.DB_HOST || 'localhost',
-    port: process.env.DB_PORT || 3306,
-    username: process.env.DB_USER || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME || 'watch_store',
-    dialect: 'mysql',
-    logging: false,
-  });
+  sequelize = new Sequelize(
+    process.env.DB_NAME || 'watch_store',
+    process.env.DB_USER || 'postgres',
+    process.env.DB_PASSWORD || '',
+    {
+      host: process.env.DB_HOST || 'localhost',
+      port: process.env.DB_PORT || 5432,
+      dialect: 'postgres',
+      logging: false,
+    }
+  );
 }
 
 console.log('Configuration finale:', {

@@ -12,8 +12,26 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Route de santé pour Render
+app.get('/health', (req, res) => {
+  res.status(200).json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/watches', watchRoutes);
+
+// Route racine
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'Watch Store API', 
+    version: '1.0.0',
+    environment: process.env.NODE_ENV || 'development'
+  });
+});
 
 app.use((err, req, res, next) => {
   console.error(err.stack);
@@ -47,6 +65,8 @@ async function startServer() {
 
     app.listen(PORT, () => {
       console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+      console.log(`📍 URL: http://localhost:${PORT}`);
+      console.log(`🏥 Health check: http://localhost:${PORT}/health`);
     });
   } catch (error) {
     console.error('❌ Erreur lors de la connexion ou synchronisation DB:', error);
