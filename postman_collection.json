@@ -1,0 +1,51 @@
+{
+  "info": {
+    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "name": "API Montres",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Ajouter une montre",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prix\": 199.99,\n  \"description\": \"Montre élégante pour homme.\",\n  \"taille_mm\": 42,\n  \"image_principale\": \"https://exemple.com/image1.jpg\",\n  \"images_secondaires\": [\n    \"https://exemple.com/image2.jpg\",\n    \"https://exemple.com/image3.jpg\",\n    \"https://exemple.com/image4.jpg\",\n    \"https://exemple.com/image5.jpg\",\n    \"https://exemple.com/image6.jpg\"\n  ],
+  \"stock\": 10,
+  \"modele\": \"Classic Silver\"
+}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/watches",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Lister les montres",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/watches",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches"]
+        }
+      },
+      "response": []
+    }
+  ]
+} 
