@@ -46,6 +46,60 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Récupérer une montre par id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/watches/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier une montre",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prix\": 249.99,\n  \"description\": \"Montre sport mise à jour.\",\n  \"taille_mm\": 44,\n  \"image_principale\": \"https://exemple.com/nouvelle-image.jpg\",\n  \"images_secondaires\": [\n    \"https://exemple.com/image2.jpg\",\n    \"https://exemple.com/image3.jpg\",\n    \"https://exemple.com/image4.jpg\",\n    \"https://exemple.com/image5.jpg\",\n    \"https://exemple.com/image6.jpg\"\n  ],\n  \"stock\": 8,\n  \"modele\": \"Sport Edition\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/watches/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer une montre",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/watches/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches", "1"]
+        }
+      },
+      "response": []
     }
   ]
 } 

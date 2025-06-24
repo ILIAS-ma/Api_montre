@@ -8,6 +8,7 @@ Bienvenue sur l'API Montres ! Cette API vous permet de gérer une collection de 
 
 - Ajouter une montre avec toutes ses caractéristiques
 - Lister toutes les montres
+- **Récupérer, modifier et supprimer une montre par id**
 - Hébergement facile (Render, Railway, etc.)
 
 ---
@@ -70,13 +71,46 @@ Chaque montre possède les champs suivants :
 - **GET** `/watches`
 - **Réponse** : Tableau de montres
 
+### 🔍 Récupérer une montre par id
+
+- **GET** `/watches/:id`
+- **Exemple** : `/watches/1`
+
+### ✏️ Modifier une montre
+
+- **PUT** `/watches/:id`
+- **Body (JSON)** : (tous les champs sont obligatoires)
+
+```json
+{
+  "prix": 249.99,
+  "description": "Montre sport mise à jour.",
+  "taille_mm": 44,
+  "image_principale": "https://exemple.com/nouvelle-image.jpg",
+  "images_secondaires": [
+    "https://exemple.com/image2.jpg",
+    "https://exemple.com/image3.jpg",
+    "https://exemple.com/image4.jpg",
+    "https://exemple.com/image5.jpg",
+    "https://exemple.com/image6.jpg"
+  ],
+  "stock": 8,
+  "modele": "Sport Edition"
+}
+```
+
+### 🗑️ Supprimer une montre
+
+- **DELETE** `/watches/:id`
+- **Exemple** : `/watches/1`
+
 ---
 
 ## 🧪 Tester avec Postman
 
 1. **Importer la collection** : `postman_collection.json`
 2. **Lancer le serveur**
-3. **Utiliser les requêtes POST et GET**
+3. **Utiliser les requêtes POST, GET, PUT, DELETE**
 
 ---
 
