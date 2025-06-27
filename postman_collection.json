@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "name": "API Montres",
+    "name": "API Montres - Collection Complète",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -17,10 +17,7 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"prix\": 199.99,\n  \"description\": \"Montre élégante pour homme.\",\n  \"taille_mm\": 42,\n  \"image_principale\": \"https://exemple.com/image1.jpg\",\n  \"images_secondaires\": [\n    \"https://exemple.com/image2.jpg\",\n    \"https://exemple.com/image3.jpg\",\n    \"https://exemple.com/image4.jpg\",\n    \"https://exemple.com/image5.jpg\",\n    \"https://exemple.com/image6.jpg\"\n  ],
-  \"stock\": 10,
-  \"modele\": \"Classic Silver\"
-}"
+          "raw": "{\n  \"prix\": 199.99,\n  \"description\": \"Montre élégante pour homme.\",\n  \"taille_mm\": 42,\n  \"image_principale\": \"https://exemple.com/image1.jpg\",\n  \"images_secondaires\": [\n    \"https://exemple.com/image2.jpg\",\n    \"https://exemple.com/image3.jpg\",\n    \"https://exemple.com/image4.jpg\",\n    \"https://exemple.com/image5.jpg\",\n    \"https://exemple.com/image6.jpg\"\n  ],\n  \"stock\": 10,\n  \"modele\": \"Classic Silver\"\n}"
         },
         "url": {
           "raw": "http://localhost:3000/watches",
@@ -33,7 +30,7 @@
       "response": []
     },
     {
-      "name": "Lister les montres",
+      "name": "Lister toutes les montres",
       "request": {
         "method": "GET",
         "header": [],
@@ -43,6 +40,60 @@
           "host": ["localhost"],
           "port": "3000",
           "path": ["watches"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Récupérer une montre par ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/watches/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Modifier une montre",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prix\": 249.99,\n  \"description\": \"Montre sport mise à jour.\",\n  \"taille_mm\": 44,\n  \"image_principale\": \"https://exemple.com/nouvelle-image.jpg\",\n  \"images_secondaires\": [\n    \"https://exemple.com/image2.jpg\",\n    \"https://exemple.com/image3.jpg\",\n    \"https://exemple.com/image4.jpg\",\n    \"https://exemple.com/image5.jpg\",\n    \"https://exemple.com/image6.jpg\"\n  ],\n  \"stock\": 8,\n  \"modele\": \"Sport Edition\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/watches/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Supprimer une montre",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/watches/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["watches", "1"]
         }
       },
       "response": []
